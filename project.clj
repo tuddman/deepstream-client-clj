@@ -9,5 +9,6 @@
                  [gloss "0.2.5"]
                  [manifold "0.1.2"]]
   
-  :plugins [[lein-ancient "0.6.8"]])
+  :plugins [[lein-ancient "0.6.8"]
+            [com.siili/lein-cucumber "1.0.7"]])
   

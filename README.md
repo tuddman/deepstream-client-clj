@@ -14,9 +14,9 @@ A [deepstream.io](https://www.deepstream.io) client, written in Clojure.
 
 #### Login and Authentication
 
-Make sure a deepstream.io server is running!
+Make sure a deepstream.io [server](https://github.com/deepstreamIO/deepstream.io) is running!
 
-Establishing a client creates  a TCP connection to a deepstream server and returns a duplex stream
+Establishing a client creates a TCP connection to a deepstream server and returns a duplex stream
 
 `(def c (ds/client "localhost" 6021))`
 
@@ -71,12 +71,12 @@ RPCs are not yet implemented.
 
 WebRTC may not get implemented (unless there is pitchfork-fervor level demand to build a ClojureScript client.. :)
 
-Pull Requests welcome
-
 Huge thanks to [@ztellman](https://github.com/ztellman) and others, for writing the great libraries that largely power this client.
+
+Pull Requests welcome
 
 ## License
 
 Copyright © 2016 tuddman
 
-Distributed under the MIT License (same as deepstream.io)
+Distributed under the MIT License (same as [deepstream.io](https://github.com/deepstreamIO/deepstream.io/blob/master/LICENSE))
