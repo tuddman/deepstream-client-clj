@@ -35,7 +35,7 @@ Establishing a client creates  a TCP connection to a deepstream server and retur
 
 `(ds/publish-event c "SomeEvent" {:a 1})`
 
-note: the data `{:a 1}` to be published can be an arbitrarily deeply nested clojure map.  It must contain native JS objects as it gets converted to stringified-JSON before sending to the server.
+note: the data `{:a 1}` to be published can be an arbitrarily deeply nested clojure map.  It must be comprised of native JS objects as it gets converted to stringified-JSON before sending to the server.
 
 #### Records
 
@@ -56,6 +56,14 @@ note: the data `{:a 1}` to be published can be an arbitrarily deeply nested cloj
 
 `(ds/handle-incoming-msgs c handler-fn)`
 
+note: the user-defined `handler-fn` should take one paramater, `message`, which can process each message as it arrives from the server. e.g:
+
+```
+;; example implementation of a handler-fn:
+(defn my-handler [message]
+    (println message))
+```
+
 ---
 
 
@@ -64,6 +72,8 @@ RPCs are not yet implemented.
 WebRTC may not get implemented (unless there is pitchfork-fervor level demand to build a ClojureScript client.. :)
 
 Pull Requests welcome
+
+Huge thanks to [@ztellman](https://github.com/ztellman) and others, for writing the great libraries that largely power this client.
 
 ## License
 
