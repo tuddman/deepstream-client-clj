@@ -12,26 +12,26 @@
  
   (deftest test-can-client-connect
     (testing "whether a client can connect to a TCP server."
-      (is (= false (nil? testc )))))
+      (is (= false? (nil? testc )))))
 
 
   (deftest can-client-authenticate
     (testing "whether a client can authenticate and receive auth ack from server."
-       (let [auth-request (ms/put! @testc (authenticate "XXX" "YYY"))
-             auth-response (segment-msg @(ms/take! testc)) ]
+       (md/let-flow [auth-request (authenticate testc "XXX" "YYY") 
+                  auth-response (segment-msg @(ms/take! testc))]
          (is (= auth-response  ["A" "A"])))))
 
 
   (deftest can-client-subscribe-to-an-event
     (testing "whether a client can subscribe to an event and receive ack from server."
-       (let [subscribe-request (ms/put! @testc (subscribe "SomeEvent") )
+       (md/let-flow [subscribe-request (subscribe-to-event testc "SomeEvent")
              subscribe-response (segment-msg @(ms/take! testc)) ]
         (is (=  subscribe-response ["E" "A" "S" "SomeEvent"] ))) ))
 
 
   (deftest can-client-publish-event
     (testing "whether a client can publish an event and receive ack from server."
-       (let [event-request (ms/put! @testc (publish "SomeEvent" {:a 1}) )
+       (md/let-flow [event-request (publish-event testc "SomeEvent" {:a 1})
              event-response (segment-msg @(ms/take! testc)) ]
         (is (= event-response ["E" "A" "EVT" "SomeEvent"] )))  ))
    

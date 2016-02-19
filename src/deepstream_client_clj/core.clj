@@ -29,11 +29,6 @@
       (gio/decode-stream s protocol))))
 
 
-(defn send-msg
-  [client msg]
-  (ms/put! @client msg))
- 
-
 (defn client
   [host port]
   (md/chain (tcp/client {:host host :port port})
@@ -48,6 +43,11 @@
       (str c/message-seperator)) ) 
 
 
+(defn send-msg
+  [client msg]
+  (ms/put! @client msg))
+ 
+
 (defn segment-msg
   "takes a server-sent message and parses it into segments for further client processing"
   [message]
@@ -59,7 +59,7 @@
 
 (defn authenticate
   ([client] (send-msg client (encode-msg  (str "A|REQ|" (json/generate-string {})))))
-  ([client username password] (send-msg (encode-msg (str "A|REQ|" (json/generate-string {:username username :password password}))))))
+  ([client username password] (send-msg client (encode-msg (str "A|REQ|" (json/generate-string {:username username :password password}))))))
 
 
 ;; EVENTS

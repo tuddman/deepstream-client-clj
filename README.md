@@ -1,6 +1,6 @@
 # deepstream-client-clj
 
-A deepstream.io client, written in Clojure. 
+A [deepstream.io](https://www.deepstream.io) client, written in Clojure. 
 
 ## Usage
 
@@ -35,7 +35,7 @@ Establishing a client creates  a TCP connection to a deepstream server and retur
 
 `(ds/publish-event c "SomeEvent" {:a 1})`
 
-note: the data to be published can be an arbitrarily deeply nested clojure map.  It must contain native objects as it gets converted to stringified-JSON before sending to the server.
+note: the data `{:a 1}` to be published can be an arbitrarily deeply nested clojure map.  It must contain native JS objects as it gets converted to stringified-JSON before sending to the server.
 
 #### Records
 
@@ -62,6 +62,8 @@ note: the data to be published can be an arbitrarily deeply nested clojure map. 
 RPCs are not yet implemented.
 
 WebRTC may not get implemented (unless there is pitchfork-fervor level demand to build a ClojureScript client.. :)
+
+Pull Requests welcome
 
 ## License
 
