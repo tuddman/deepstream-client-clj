@@ -2,6 +2,11 @@
 
 A [deepstream.io](https://www.deepstream.io) client, written in Clojure. 
 
+
+## Version
+
+[![Clojars Project](https://img.shields.io/clojars/v/tuddman/deepstream-client-clj.svg)](https://clojars.org/tuddman/deepstream-client-clj)
+
 ## Usage
 
 
@@ -56,7 +61,7 @@ note: the data `{:a 1}` to be published can be an arbitrarily deeply nested cloj
 
 `(ds/handle-incoming-msgs c handler-fn)`
 
-note: the user-defined `handler-fn` should take one paramater, `message`, which can process each message as it arrives from the server. e.g:
+note: the user-defined `handler-fn` has one paramater, `message`, which when passed as the argument processes each message as it arrives from the server. e.g:
 
 ```
 ;; example implementation of a handler-fn:
@@ -72,6 +77,7 @@ RPCs are not yet implemented.
 WebRTC may not get implemented (unless there is pitchfork-fervor level demand to build a ClojureScript client.. :)
 
 Huge thanks to [@ztellman](https://github.com/ztellman) and others, for writing the great libraries that largely power this client.
+And of course to the good folks at [deepstream](https://deepstream.io), for making a great product.
 
 Pull Requests welcome
 

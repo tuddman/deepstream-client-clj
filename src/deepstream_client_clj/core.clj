@@ -51,7 +51,7 @@
 (defn segment-msg
   "takes a server-sent message and parses it into segments for further client processing"
   [message]
-  (println "received -> " message)
+  (println message)
   (let [segments (string/split (string/replace message c/message-part-seperator \|) #"\|")]
     (if (string/ends-with? (peek segments) (str c/message-seperator)  )
       (assoc segments (- (count segments) 1) (string/trimr (peek segments))  )
